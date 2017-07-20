@@ -1,0 +1,9 @@
+C:\Workspace\CsvHandlersMakeProductionReady\CsvHandlers.Tests\obj\Debug\netstandard1.4\CsvHandlers.Tests.csprojResolveAssemblyReference.cache
+C:\Workspace\CsvHandlersMakeProductionReady\CsvHandlers.Tests\obj\Debug\netstandard1.4\CsvHandlers.Tests.AssemblyInfo.cs
+C:\Workspace\CsvHandlersMakeProductionReady\CsvHandlers.Tests\bin\Debug\netstandard1.4\System1Group.CsvHandlers.Tests.deps.json
+C:\Workspace\CsvHandlersMakeProductionReady\CsvHandlers.Tests\bin\Debug\netstandard1.4\System1Group.CsvHandlers.Tests.dll
+C:\Workspace\CsvHandlersMakeProductionReady\CsvHandlers.Tests\bin\Debug\netstandard1.4\System1Group.CsvHandlers.Tests.pdb
+C:\Workspace\CsvHandlersMakeProductionReady\CsvHandlers.Tests\bin\Debug\netstandard1.4\System1Group.CsvHandlers.dll
+C:\Workspace\CsvHandlersMakeProductionReady\CsvHandlers.Tests\bin\Debug\netstandard1.4\System1Group.CsvHandlers.pdb
+C:\Workspace\CsvHandlersMakeProductionReady\CsvHandlers.Tests\obj\Debug\netstandard1.4\System1Group.CsvHandlers.Tests.dll
+C:\Workspace\CsvHandlersMakeProductionReady\CsvHandlers.Tests\obj\Debug\netstandard1.4\System1Group.CsvHandlers.Tests.pdb
