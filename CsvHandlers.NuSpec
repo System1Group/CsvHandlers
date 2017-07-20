@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>CsvHandlers</id>
+        <version>1.0.0</version>
+        <title>CsvHandlers<title/>
+        <authors>System1Group</authors>
+        <owners>System1Group</owners>
+        <description>Readers and Writers for CSV data</description>
+        <projectUrl>https://github.com/System1Group/CsvHandlers</projectUrl>
+        <licenseUrl>https://github.com/System1Group/CsvHandlers/blob/master/LICENSE</licenseUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <dependencies>
+        </dependencies>
+    </metadata>
+    <files>
+		  <file src="bin\release\System1Group.CsvHandlers.dll" target="lib\System1Group.CsvHandlers.dll" />
+		  <file src="bin\release\System1Group.CsvHandlers.pdb" target="lib\System1Group.CsvHandlers.pdb" />
+    </files>
+</package>
