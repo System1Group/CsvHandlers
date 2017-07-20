@@ -14,7 +14,6 @@
         </dependencies>
     </metadata>
     <files>
-		  <file src="bin\release\System1Group.CsvHandlers.dll" target="lib\System1Group.CsvHandlers.dll" />
-		  <file src="bin\release\System1Group.CsvHandlers.pdb" target="lib\System1Group.CsvHandlers.pdb" />
+		  <file src="bin\release\netstandard1.4\System1Group.CsvHandlers.dll" target="lib\System1Group.CsvHandlers.dll" />
     </files>
 </package>
