@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using NUnit.Framework;
 
 namespace System1Group.CsvHandlers.Tests.CsvReader
@@ -10,7 +11,12 @@ namespace System1Group.CsvHandlers.Tests.CsvReader
         public void SingleRowWithEndNewLine()
         {
             var csv = "col1\tcol2\tcol3\nrow1\trow2\trow3\n";
-            var expectedTokens = new string[] { "row1", "row2", "row3" };
+            var expectedTokens = new List<CsvToken>()
+            {
+                new CsvToken() { Header = "col1", Index = 0, Line = 0, Value = "row1" },
+                new CsvToken() { Header = "col2", Index = 1, Line = 0, Value = "row2" },
+                new CsvToken() { Header = "col3", Index = 2, Line = 0, Value = "row3" }
+            };
 
             var reader = new CsvHandlers.CsvReader(new StringReader(csv), false, '\t');
 
@@ -18,18 +24,26 @@ namespace System1Group.CsvHandlers.Tests.CsvReader
             CsvToken token;
             while (reader.ReadOut(out token))
             {
-                Assert.AreEqual(expectedTokens[index], token.Value);
+                Assert.AreEqual(expectedTokens[index].Header, token.Header);
+                Assert.AreEqual(expectedTokens[index].Index, token.Index);
+                Assert.AreEqual(expectedTokens[index].Line, token.Line);
+                Assert.AreEqual(expectedTokens[index].Value, token.Value);
                 index++;
             }
 
-            Assert.AreEqual(expectedTokens.Length, index);
+            Assert.AreEqual(expectedTokens.Count, index);
         }
 
         [Test]
         public void SingleRowWithoutEndNewLine()
         {
             var csv = "col1\tcol2\tcol3\nrow1\trow2\trow3";
-            var expectedTokens = new string[] { "row1", "row2", "row3" };
+            var expectedTokens = new List<CsvToken>()
+            {
+                new CsvToken() { Header = "col1", Index = 0, Line = 0, Value = "row1" },
+                new CsvToken() { Header = "col2", Index = 1, Line = 0, Value = "row2" },
+                new CsvToken() { Header = "col3", Index = 2, Line = 0, Value = "row3" }
+            };
 
             var reader = new CsvHandlers.CsvReader(new StringReader(csv), false, '\t');
 
@@ -37,7 +51,10 @@ namespace System1Group.CsvHandlers.Tests.CsvReader
             CsvToken token;
             while (reader.ReadOut(out token))
             {
-                Assert.AreEqual(expectedTokens[index], token.Value);
+                Assert.AreEqual(expectedTokens[index].Header, token.Header);
+                Assert.AreEqual(expectedTokens[index].Index, token.Index);
+                Assert.AreEqual(expectedTokens[index].Line, token.Line);
+                Assert.AreEqual(expectedTokens[index].Value, token.Value);
                 index++;
             }
 
