@@ -137,6 +137,11 @@
 
                 sb.Append((char)c);
             }
+
+            if (sb.Length > 0)
+            {
+                this.headers.Add(sb.ToString());
+            }
         }
 
         public void Dispose()
