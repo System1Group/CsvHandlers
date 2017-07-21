@@ -1,7 +1,7 @@
 ﻿namespace System1Group.CsvHandlers.Tests
 {
-    using NUnit.Framework;
     using System.IO;
+    using NUnit.Framework;
 
     [TestFixture]
     public class CsvReader_Tests
