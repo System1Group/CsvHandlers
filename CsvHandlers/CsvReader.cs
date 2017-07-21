@@ -93,6 +93,12 @@
                 sb.Append((char)c);
             }
 
+            if (sb.Length > 0)
+            {
+                token.Value = sb.ToString();
+                this.index += 1;
+            }
+
             if (token.Value == null)
             {
                 this.Current = null;
