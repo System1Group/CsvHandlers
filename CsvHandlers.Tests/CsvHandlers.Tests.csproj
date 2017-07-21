@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsvReader\Read.Tests.cs" />
+    <Compile Include="CsvReader\Headers.Tests.cs" />
     <Compile Include="CsvReader\ReadOut.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
