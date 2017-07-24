@@ -17,7 +17,7 @@
         private bool finalised; // TODO: Guard against mutation after finalisation, or work around requiring finalisation
 
         // public CsvWriter(char delimiter) => this.delimiter = delimiter; // TODO VS2017
-        public CsvWriter(char delimiter)
+        public CsvWriter(char delimiter = ',')
         {
             this.delimiter = delimiter;
         }
