@@ -8,11 +8,11 @@ namespace System1Group.CsvHandlers
 
         void ResetWithHeaders(IEnumerable<string> headers);
 
-        void AddData(string header, string value);
+        void AddCell(string header, string value);
 
-        void AddData(CsvToken token);
+        void AddToken(CsvToken token);
 
-        void NextRecord();
+        void AddRow();
 
         string Build();
     }

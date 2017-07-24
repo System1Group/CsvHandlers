@@ -6,7 +6,7 @@
     using System.IO;
     using System.Text;
 
-    public class CsvReader : IDisposable
+    public class CsvReader : IDisposable, ICsvReader
     {
         private readonly StringReader reader;
 
