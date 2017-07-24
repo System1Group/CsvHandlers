@@ -43,7 +43,7 @@
             }
         }
 
-        public void AddData(string header, string value)
+        private void AddData(string header, string value)
         {
             IList<string> list;
             if (!this.data.TryGetValue(header, out /*var TODO VS2017*/ list))
