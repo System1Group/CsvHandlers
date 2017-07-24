@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using NUnit.Framework;
-
-namespace System1Group.CsvHandlers.Tests.CsvReader
+﻿namespace System1Group.CsvHandlers.Tests.CsvReader
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using NUnit.Framework;
+
     [TestFixture]
     public class CsvReader_Read_Tests
     {
