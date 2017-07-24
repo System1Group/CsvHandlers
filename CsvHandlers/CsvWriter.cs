@@ -80,7 +80,7 @@
             throw new ArgumentException($"Tokens must be provided in Line order. Got {token.Line} when expecting {this.active} or {this.active + 1}");
         }
 
-        public void NextRecord()
+        private void NextRecord()
         {
             this.records += 1;
             this.active += 1;
