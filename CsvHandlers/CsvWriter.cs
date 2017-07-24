@@ -43,7 +43,7 @@
             }
         }
 
-        private void AddData(string header, string value)
+        public void AddData(string header, string value)
         {
             IList<string> list;
             if (!this.data.TryGetValue(header, out /*var TODO VS2017*/ list))
@@ -80,7 +80,7 @@
             throw new ArgumentException($"Tokens must be provided in Line order. Got {token.Line} when expecting {this.active} or {this.active + 1}");
         }
 
-        private void NextRecord()
+        public void NextRecord()
         {
             this.records += 1;
             this.active += 1;
