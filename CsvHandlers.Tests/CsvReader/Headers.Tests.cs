@@ -98,7 +98,7 @@ namespace System1Group.CsvHandlers.Tests.CsvReader
         }
 
         [Test]
-        public void RowLongerThanCol()
+        public void RowLongerThanHeaders()
         {
             var csv = "col1\tcol2\tcol3\nr1\tr2\tr3\tr4";
 
