@@ -26,7 +26,8 @@
             this.InitialiseHeaders();
         }
 
-        public CsvReader(StringReader reader, bool ignoreCommasInExplicitStrings) : this(reader, ignoreCommasInExplicitStrings, ',')
+        public CsvReader(StringReader reader, bool ignoreCommasInExplicitStrings)
+            : this(reader, ignoreCommasInExplicitStrings, ',')
         {
         }
 
@@ -109,6 +110,11 @@
             return true;
         }
 
+        public void Dispose()
+        {
+            this.reader?.Dispose();
+        }
+
         private void InitialiseHeaders()
         {
             this.headers = new List<string>();
@@ -142,11 +148,6 @@
             {
                 this.headers.Add(sb.ToString());
             }
-        }
-
-        public void Dispose()
-        {
-            this.reader?.Dispose();
         }
     }
 }

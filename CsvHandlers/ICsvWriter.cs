@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace System1Group.CsvHandlers
+﻿namespace System1Group.CsvHandlers
 {
+    using System.Collections.Generic;
+
     public interface ICsvWriter
     {
         void Reset();

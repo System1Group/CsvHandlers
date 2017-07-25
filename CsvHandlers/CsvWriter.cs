@@ -2,9 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using System.Text;
 
     public class CsvWriter : ICsvWriter
     {
@@ -89,17 +89,6 @@
             this.rowIndex += 1;
         }
 
-        private void FinaliseRow()
-        {
-            foreach (var column in this.data.Values)
-            {
-                if (column.Count != this.rowIndex+1)
-                {
-                    column.Add(string.Empty);
-                }
-            }
-        }
-
         public string Build()
         {
             this.FinaliseRow();
@@ -134,6 +123,17 @@
             }
 
             return sb.ToString();
+        }
+
+        private void FinaliseRow()
+        {
+            foreach (var column in this.data.Values)
+            {
+                if (column.Count != this.rowIndex + 1)
+                {
+                    column.Add(string.Empty);
+                }
+            }
         }
     }
 }
