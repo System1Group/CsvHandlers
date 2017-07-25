@@ -84,11 +84,16 @@
 
         public void AddRow()
         {
-            this.rowIndex += 1;
+            this.FinaliseRow();
 
+            this.rowIndex += 1;
+        }
+
+        private void FinaliseRow()
+        {
             foreach (var column in this.data.Values)
             {
-                if (column.Count != this.rowIndex)
+                if (column.Count != this.rowIndex+1)
                 {
                     column.Add(string.Empty);
                 }
@@ -97,6 +102,8 @@
 
         public string Build()
         {
+            this.FinaliseRow();
+
             var sb = new StringBuilder();
 
             for (var i = 0; i < this.headers.Count; i++)
@@ -115,7 +122,7 @@
             {
                 for (var col = 0; col < this.headers.Count; col++)
                 {
-                    sb.Append(this.data[this.headers[col]][row]);// Thows because the last row might not be complete!
+                    sb.Append(this.data[this.headers[col]][row]);
 
                     if (col + 1 != this.headers.Count)
                     {
