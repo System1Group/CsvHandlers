@@ -52,9 +52,12 @@
     <Compile Include="CsvReader\Read.Tests.cs" />
     <Compile Include="CsvReader\Headers.Tests.cs" />
     <Compile Include="CsvReader\ReadOut.Tests.cs" />
-    <Compile Include="CsvWriter\DuplicateColumnNames.Tests.cs" />
+    <Compile Include="CsvWriter\AddCell.Tests.cs" />
+    <Compile Include="CsvWriter\Constructor.Tests.cs" />
+    <Compile Include="CsvWriter\ResetWithHeaders.Tests.cs" />
     <Compile Include="CsvWriter\Reset.Tests.cs" />
-    <Compile Include="CsvWriter\AddData.Tests.cs" />
+    <Compile Include="CsvWriter\AddToken.Tests.cs" />
+    <Compile Include="CsvWriter\WithHeadersConstructor.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
