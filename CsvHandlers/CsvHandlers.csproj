@@ -6,8 +6,12 @@
     <RootNamespace>System1Group.CsvHandlers</RootNamespace>
 	<RunCodeAnalysis>true</RunCodeAnalysis>
 	<CodeAnalysisRuleSet>BrainjuicerRuleSet.ruleset</CodeAnalysisRuleSet>
+	<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>
     <ItemGroup>
         <CodeAnalysisDictionary Include="MyCustomDictionary.xml" />
+    </ItemGroup>
+	<ItemGroup>
+      <PackageReference Include="StyleCop.Analyzers" Version="1.0.0" />
     </ItemGroup>
 </Project>
