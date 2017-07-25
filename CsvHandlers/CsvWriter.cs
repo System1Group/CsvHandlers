@@ -15,6 +15,12 @@
         private int rowIndex;
 
         // public CsvWriter(char delimiter) => this.delimiter = delimiter; // TODO VS2017
+        public CsvWriter(IEnumerable<string> headers, char delimiter = ',')
+        {
+            this.delimiter = delimiter;
+            this.ResetWithHeaders(headers);
+        }
+
         public CsvWriter(char delimiter = ',')
         {
             this.delimiter = delimiter;
