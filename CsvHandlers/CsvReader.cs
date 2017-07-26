@@ -6,7 +6,7 @@
     using System.IO;
     using System.Text;
 
-    public class CsvReader : IDisposable
+    public class CsvReader : IDisposable, ICsvReader
     {
         private readonly StringReader reader;
 
@@ -26,11 +26,12 @@
             this.InitialiseHeaders();
         }
 
-        public CsvReader(StringReader reader, bool ignoreCommasInExplicitStrings) : this(reader, ignoreCommasInExplicitStrings, ',')
+        public CsvReader(StringReader reader, bool ignoreCommasInExplicitStrings)
+            : this(reader, ignoreCommasInExplicitStrings, ',')
         {
         }
 
-        public char Delimiter { get; set; }
+        public char Delimiter { get; }
 
         public CsvToken Current { get; private set; }
 
@@ -93,6 +94,12 @@
                 sb.Append((char)c);
             }
 
+            if (sb.Length > 0)
+            {
+                token.Value = sb.ToString();
+                this.index += 1;
+            }
+
             if (token.Value == null)
             {
                 this.Current = null;
@@ -101,6 +108,11 @@
 
             this.Current = token;
             return true;
+        }
+
+        public void Dispose()
+        {
+            this.reader?.Dispose();
         }
 
         private void InitialiseHeaders()
@@ -131,11 +143,11 @@
 
                 sb.Append((char)c);
             }
-        }
 
-        public void Dispose()
-        {
-            this.reader?.Dispose();
+            if (sb.Length > 0)
+            {
+                this.headers.Add(sb.ToString());
+            }
         }
     }
 }

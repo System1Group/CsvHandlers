@@ -2,22 +2,26 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using System.Text;
 
-    public class CsvWriter
+    public class CsvWriter : ICsvWriter
     {
         private readonly char delimiter;
 
         private IDictionary<string, IList<string>> data = new Dictionary<string, IList<string>>();
         private IList<string> headers = new List<string>();
-        private int records;
-        private int active;
-        private bool finalised; // TODO: Guard against mutation after finalisation, or work around requiring finalisation
+        private int rowIndex;
 
         // public CsvWriter(char delimiter) => this.delimiter = delimiter; // TODO VS2017
-        public CsvWriter(char delimiter)
+        public CsvWriter(IEnumerable<string> headers, char delimiter = ',')
+        {
+            this.delimiter = delimiter;
+            this.ResetWithHeaders(headers);
+        }
+
+        public CsvWriter(char delimiter = ',')
         {
             this.delimiter = delimiter;
         }
@@ -28,9 +32,7 @@
         {
             this.headers = new List<string>();
             this.data = new Dictionary<string, IList<string>>();
-            this.records = 0;
-            this.active = 0;
-            this.finalised = false;
+            this.rowIndex = 0;
         }
 
         public void ResetWithHeaders(IEnumerable<string> headers)
@@ -43,65 +45,54 @@
             }
         }
 
-        public void AddData(string header, string value)
+        public void AddCell(string header, string value)
         {
-            IList<string> list;
-            if (!this.data.TryGetValue(header, out /*var TODO VS2017*/ list))
+            IList<string> column;
+            if (!this.data.TryGetValue(header, out /*var TODO VS2017*/ column))
             {
                 this.headers.Add(header);
-                list = Enumerable.Repeat(string.Empty, this.active).ToList();
-                this.data[header] = list;
+                column = Enumerable.Repeat(string.Empty, this.rowIndex).ToList();
+                this.data[header] = column;
             }
 
-            if (list.Count <= this.active)
+            if (column.Count <= this.rowIndex)
             {
-                list.Add(value);
+                column.Add(value);
                 return;
             }
 
-            list[this.active] = value;
+            column[this.rowIndex] = value;
         }
 
-        public void AddData(CsvToken token)
+        public void AddToken(CsvToken token)
         {
-            if (token.Line == this.active)
+            if (token.Line == this.rowIndex)
             {
-                this.AddData(token.Header, token.Value);
+                this.AddCell(token.Header, token.Value);
                 return;
             }
 
-            if (token.Line == this.active + 1)
+            if (token.Line == this.rowIndex + 1)
             {
-                this.NextRecord();
-                this.AddData(token.Header, token.Value);
+                this.NextRow();
+                this.AddCell(token.Header, token.Value);
                 return;
             }
 
-            throw new ArgumentException($"Tokens must be provided in Line order. Got {token.Line} when expecting {this.active} or {this.active + 1}");
+            throw new ArgumentException($"Tokens must be provided in Line order. Got {token.Line} when expecting {this.rowIndex} or {this.rowIndex + 1}");
         }
 
-        public void NextRecord()
+        public void NextRow()
         {
-            this.records += 1;
-            this.active += 1;
+            this.FinaliseRow();
 
-            foreach (var list in this.data.Values)
-            {
-                if (list.Count != this.records)
-                {
-                    list.Add(string.Empty);
-                }
-            }
-        }
-
-        public void Finalise()
-        {
-            this.NextRecord();
-            this.finalised = true;
+            this.rowIndex += 1;
         }
 
         public string Build()
         {
+            this.FinaliseRow();
+
             var sb = new StringBuilder();
 
             for (var i = 0; i < this.headers.Count; i++)
@@ -116,13 +107,13 @@
 
             sb.Append('\n');
 
-            for (var i = 0; i < this.records; i++)
+            for (var row = 0; row <= this.rowIndex; row++)
             {
-                for (var j = 0; j < this.headers.Count; j++)
+                for (var col = 0; col < this.headers.Count; col++)
                 {
-                    sb.Append(this.data[this.headers[j]][i]);
+                    sb.Append(this.data[this.headers[col]][row]);
 
-                    if (j + 1 != this.headers.Count)
+                    if (col + 1 != this.headers.Count)
                     {
                         sb.Append(this.delimiter);
                     }
@@ -132,6 +123,17 @@
             }
 
             return sb.ToString();
+        }
+
+        private void FinaliseRow()
+        {
+            foreach (var column in this.data.Values)
+            {
+                if (column.Count != this.rowIndex + 1)
+                {
+                    column.Add(string.Empty);
+                }
+            }
         }
     }
 }

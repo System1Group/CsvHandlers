@@ -13,11 +13,10 @@ public string FilterOutRowByHeader(string csv, string filter)
         {
             if (token.Header != filter)
             {
-                writer.AddData(token);
+                writer.AddToken(token);
             }
         }
 
-        writer.Finalise();
         return writer.Build();
     }
 }
