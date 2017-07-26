@@ -1,8 +1,7 @@
-﻿using System;
-using NUnit.Framework;
-
-namespace System1Group.CsvHandlers.Tests.CsvWriter
+﻿namespace System1Group.CsvHandlers.Tests.CsvWriter
 {
+    using NUnit.Framework;
+
     [TestFixture]
     public class CsvHandlers_CsvWriter_AddCell_Tests
     {
@@ -20,7 +19,7 @@ namespace System1Group.CsvHandlers.Tests.CsvWriter
         {
             var writer = new CsvHandlers.CsvWriter('\t');
 
-            writer.AddCell("header1", "row1col1" );
+            writer.AddCell("header1", "row1col1");
             writer.AddCell("header2", "row1col2");
             writer.AddCell("header3", "row1col3");
 
@@ -69,6 +68,5 @@ namespace System1Group.CsvHandlers.Tests.CsvWriter
             var result = writer.Build();
             Assert.AreEqual("header1,header2,header3\nrow1col1,row1col2,row1col3\nrow2col1,,\n", result);
         }
-
     }
 }

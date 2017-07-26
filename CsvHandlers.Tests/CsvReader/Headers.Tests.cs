@@ -1,9 +1,9 @@
-﻿using System.IO;
-using System.Linq;
-using NUnit.Framework;
-
-namespace System1Group.CsvHandlers.Tests.CsvReader
+﻿namespace System1Group.CsvHandlers.Tests.CsvReader
 {
+    using System.IO;
+    using System.Linq;
+    using NUnit.Framework;
+
     [TestFixture]
     public class CsvReader_Headers_Tests
     {
@@ -111,6 +111,5 @@ namespace System1Group.CsvHandlers.Tests.CsvReader
 
             Assert.AreEqual(headers.Count, 3);
         }
-
     }
 }

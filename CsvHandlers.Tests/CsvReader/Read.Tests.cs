@@ -34,7 +34,6 @@
             Assert.AreEqual(expectedTokens.Count, index);
         }
 
-
         [Test]
         public void SingleRowWithoutEndNewLine()
         {
@@ -102,7 +101,7 @@
                 new CsvToken() { Header = "col1", Index = 0, Line = 0, Value = "row1" },
                 new CsvToken() { Header = "col2", Index = 1, Line = 0, Value = "row2" },
                 new CsvToken() { Header = "col3", Index = 2, Line = 0, Value = "row3" },
-                new CsvToken() { Header = null  , Index = 3, Line = 0, Value = "row4" },
+                new CsvToken() { Header = null, Index = 3, Line = 0, Value = "row4" },
 
                 new CsvToken() { Header = "col1", Index = 0, Line = 1, Value = "row1c2" },
                 new CsvToken() { Header = "col2", Index = 1, Line = 1, Value = "row2c2" },

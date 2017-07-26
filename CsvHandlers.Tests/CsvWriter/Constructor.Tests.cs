@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-
-namespace System1Group.CsvHandlers.Tests.CsvWriter
+﻿namespace System1Group.CsvHandlers.Tests.CsvWriter
 {
+    using NUnit.Framework;
+
     [TestFixture]
     public class Constructor
     {

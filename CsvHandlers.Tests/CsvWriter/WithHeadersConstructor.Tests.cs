@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using NUnit.Framework;
-
-namespace System1Group.CsvHandlers.Tests.CsvWriter
+﻿namespace System1Group.CsvHandlers.Tests.CsvWriter
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using NUnit.Framework;
+
     [TestFixture]
     public class WithHeadersConstructor
     {

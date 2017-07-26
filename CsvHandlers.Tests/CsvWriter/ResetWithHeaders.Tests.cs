@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using NUnit.Framework;
-
-namespace System1Group.CsvHandlers.Tests.CsvWriter
+﻿namespace System1Group.CsvHandlers.Tests.CsvWriter
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using NUnit.Framework;
+
     [TestFixture]
     public class CsvHandlers_CsvWriter_ResetWithHEaders_Tests
     {
@@ -69,7 +69,5 @@ namespace System1Group.CsvHandlers.Tests.CsvWriter
             var result = writer.Build();
             Assert.AreEqual("head1\thead2\thead3\thead4\n\t\trow1col3\trow1col4\n", result);
         }
-
-
     }
 }

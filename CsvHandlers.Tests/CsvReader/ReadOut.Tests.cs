@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using NUnit.Framework;
-
-namespace System1Group.CsvHandlers.Tests.CsvReader
+﻿namespace System1Group.CsvHandlers.Tests.CsvReader
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using NUnit.Framework;
+
     [TestFixture]
     public class CsvReader_ReadOut_Tests
     {
@@ -101,7 +101,7 @@ namespace System1Group.CsvHandlers.Tests.CsvReader
                 new CsvToken() { Header = "col1", Index = 0, Line = 0, Value = "row1" },
                 new CsvToken() { Header = "col2", Index = 1, Line = 0, Value = "row2" },
                 new CsvToken() { Header = "col3", Index = 2, Line = 0, Value = "row3" },
-                new CsvToken() { Header = null  , Index = 3, Line = 0, Value = "row4" },
+                new CsvToken() { Header = null, Index = 3, Line = 0, Value = "row4" },
 
                 new CsvToken() { Header = "col1", Index = 0, Line = 1, Value = "row1c2" },
                 new CsvToken() { Header = "col2", Index = 1, Line = 1, Value = "row2c2" },
