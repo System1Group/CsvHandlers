@@ -74,7 +74,7 @@
 
             if (token.Line == this.rowIndex + 1)
             {
-                this.AddRow();
+                this.NextRow();
                 this.AddCell(token.Header, token.Value);
                 return;
             }
@@ -82,7 +82,7 @@
             throw new ArgumentException($"Tokens must be provided in Line order. Got {token.Line} when expecting {this.rowIndex} or {this.rowIndex + 1}");
         }
 
-        public void AddRow()
+        public void NextRow()
         {
             this.FinaliseRow();
 

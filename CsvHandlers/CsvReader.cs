@@ -31,7 +31,7 @@
         {
         }
 
-        public char Delimiter { get; set; }
+        public char Delimiter { get; }
 
         public CsvToken Current { get; private set; }
 

@@ -12,7 +12,7 @@
 
         void AddToken(CsvToken token);
 
-        void AddRow();
+        void NextRow();
 
         string Build();
     }

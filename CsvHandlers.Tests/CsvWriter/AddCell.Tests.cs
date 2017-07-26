@@ -23,7 +23,7 @@
             writer.AddCell("header2", "row1col2");
             writer.AddCell("header3", "row1col3");
 
-            writer.AddRow();
+            writer.NextRow();
 
             writer.AddCell("header1", "row2col1");
             writer.AddCell("header2", "row2col2");
@@ -42,7 +42,7 @@
             writer.AddCell("header2", "row1col2");
             writer.AddCell("header3", "row1col3");
 
-            writer.AddRow();
+            writer.NextRow();
 
             writer.AddCell("header1", "row2col1");
             writer.AddCell("header2", "row2col2");
@@ -61,7 +61,7 @@
             writer.AddCell("header2", "row1col2");
             writer.AddCell("header3", "row1col3");
 
-            writer.AddRow();
+            writer.NextRow();
 
             writer.AddCell("header1", "row2col1");
 
