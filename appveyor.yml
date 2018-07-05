@@ -1,0 +1,30 @@
+version: 0.0.{build}
+branches:
+  only:
+  - master
+image: Visual Studio 2017
+configuration: Release
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+install:
+  - nuget sources add -name CSharpRuleSet -source https://ci.appveyor.com/nuget/csharpruleset-rxwtqx7d05sl
+  - nuget sources add -name Attributes -source https://ci.appveyor.com/nuget/lib-attributes-0mux6mo64i0f
+  - nuget sources add -name Core -source https://ci.appveyor.com/nuget/lib-coreutils-r8l5cjkabp8y
+nuget:
+  project_feed: true 
+  disable_publish_on_pr: true
+init:
+- ps: if ($env:APPVEYOR_REPO_TAG -eq "true") { Update-AppveyorBuild -Version "$env:APPVEYOR_REPO_TAG_NAME" }
+before_build:
+- cmd: dotnet restore
+build:
+  verbosity: minimal
+test_script:
+- ps: dotnet test CsvHandlers.Tests\System1Group.Lib.CsvHandlers.Tests.csproj
+after_build:
+- ps: dotnet pack CsvHandlers\System1Group.Lib.CsvHandlers.csproj
+on_success:
+- ps: if ($env:APPVEYOR_REPO_TAG -eq "true") { Get-ChildItem -Path .\ -Include *.nupkg -Recurse | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name } } else { Write-Host "Skip uploading artefacts for non-tag build." }
