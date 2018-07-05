@@ -1,4 +1,4 @@
-﻿namespace System1Group.CsvHandlers
+﻿namespace System1Group.Lib.CsvHandlers
 {
     public class CsvToken
     {

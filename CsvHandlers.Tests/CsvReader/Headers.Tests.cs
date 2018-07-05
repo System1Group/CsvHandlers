@@ -1,4 +1,4 @@
-﻿namespace System1Group.CsvHandlers.Tests.CsvReader
+﻿namespace System1Group.Lib.CsvHandlers.Tests.CsvReader
 {
     using System.IO;
     using System.Linq;

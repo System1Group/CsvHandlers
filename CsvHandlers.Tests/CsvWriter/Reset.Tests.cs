@@ -1,4 +1,4 @@
-﻿namespace System1Group.CsvHandlers.Tests.CsvWriter
+﻿namespace System1Group.Lib.CsvHandlers.Tests.CsvWriter
 {
     using System.Linq;
     using NUnit.Framework;
